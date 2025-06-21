@@ -1,0 +1,163 @@
+---
+title: "L3"
+author: "Tahiya"
+date: "2025-04-26"
+output: html_document
+---
+
+#Installation of R Markdown
+
+We will use `rmarkdown` to have the flexibility of writing codes like the one you are reading now. If you haven't installed the `rmarkdown` package yet, you can do so with:
+
+```{r install-packages, eval=FALSE}
+# Install rmarkdown package
+#install.packages("rmarkdown")
+library(rmarkdown)
+# Other useful packages we might use
+```
+```{r install-packages, eval=FALSE}
+#install.packages("dplyr")    # Data manipulation
+library(dplyr)
+#install.packages("readr")    # Reading CSV files
+library(readr)
+```
+
+
+```{r install-packages, eval=FALSE}
+```
+```{r}
+```
+
+
+```{r}
+```{initial setup}
+
+setwd("C:/Users/Tahiya Tabassum/Downloads/pythonR")
+# Clear environment
+rm(list = ls())
+
+# Check working directoryz
+getwd()
+```
+
+```{r}
+# Download small example dataset
+download.file("https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleControlsPopulation.csv",
+              destfile = "mice.csv")
+
+# Load data
+mice <- read.csv("mice.csv")
+```
+```{r}
+atomic_vec <- c(Human=0.5, Mouse=0.33)
+atomic_vec["Human"]
+atomic_vec["Mouse"]
+```
+
+```{r}
+`atomic_vec <- c(Human=0.5, Mouse=0.33)
+atomic_vec["Human"]
+atomic_vec["Mouse"]
+```
+
+
+
+```{r}
+
+4+3
+names <- c("Mina", "Raju", "Mithu", "Lali")
+gender <- c("Female", "Male", "Female", "Female")
+age <- c(15, 12, 2, 3)
+is_human <- c(TRUE, TRUE, FALSE, FALSE)
+cartoon <- data.frame(names, gender, age, is_human)
+write.table(cartoon, "cartoon.csv", sep = ",", col.names = TRUE)
+df <- read.table("cartoon.csv", header = TRUE, sep = ",")
+df #create table
+str(df) #structure of `df`
+##subseting
+cart#condition for selecting only male characters
+male_df <- cartoon[cartoon$gender == "Male", ]
+male_df[1:2, 2:3] #row 1-2, column 2-3
+
+```
+```{r}
+
+```
+
+```{r}
+expr_matrix <- matrix(
+  c(12.3, 8.7, 15.2, 6.8,
+    9.5, 11.2, 13.7, 7.4,
+    5.6, 6.8, 7.9, 6.5),
+  nrow = 3, ncol = 4, byrow = TRUE
+)
+rownames(expr_matrix) <- c("BRCA1", "TP53", "GAPDH")
+colnames(expr_matrix) <- c("Control_1", "Control_2", "Treatment_1", "Treatment_2")
+expr_matrix
+```
+
+```{r}
+# Matrix visualization
+# Heatmap of expression data
+heatmap(expr_matrix, 
+        Colv = NA,         # Don't cluster columns
+        scale = "row",     # Scale by row (gene)
+        col = heat.colors(16),
+        main = "Gene Expression Heatmap")
+```
+
+```{r}
+#Create a simple Gene Expression matrix (RNA-seq style)
+
+Gene_Expression <- matrix(c(
+  5.2, 3.1, 8.5,   # Sample 1
+  6.0, 2.8, 7.9    # Sample 2
+), nrow = 2, byrow = TRUE)
+
+rownames(Gene_Expression) <- c("Sample_1", "Sample_2")
+colnames(Gene_Expression) <- c("GeneA", "GeneB", "GeneC")
+
+print("Gene Expression Matrix:")
+print(Gene_Expression)
+```
+
+```{r}
+#2. Matrix multiplication
+# Suppose each gene has an associated "gene weight" (e.g., biological importance)
+
+Gene_Weights <- matrix(c(0.8, 1.2, 1.0), nrow = 3, byrow = TRUE)
+rownames(Gene_Weights) <- c("GeneA", "GeneB", "GeneC")
+colnames(Gene_Weights) <- c("Weight")
+
+Total_Weighted_Expression <- Gene_Expression %*% Gene_Weights
+print("Total Weighted Expression per Sample:")
+print(Total_Weighted_Expression)
+```
+
+```{r}
+Operator	Meaning	Example
+==	Equal to	x == 5
+!=	Not equal	x != 5
+<	Less than	x < 5
+>	Greater than	x > 5
+<=	Less or equal	x <= 5
+>=	Greater or equal	x >= 5
+!	Not	!(x < 5)
+|	OR	x < 5 | x > 10
+&	AND	x > 5 & x < 10
+```
+Operator	Meaning	Example
+==	Equal to	x == 5
+!=	Not equal	x != 5
+<	Less than	x < 5
+>	Greater than	x > 5
+<=	Less or equal	x <= 5
+>=	Greater or equal	x >= 5
+!	Not	!(x < 5)
+|	OR	x < 5 | x > 10
+&	AND	x > 5 & x < 10
+
+```{r}
+>diag {3}
+```
+
